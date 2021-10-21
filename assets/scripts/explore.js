@@ -45,7 +45,6 @@ function pressToTalkButtonEvent() {
     });
 
     synth.speak(utterThis);
-    console.log('after speak');
   });
   
 }
