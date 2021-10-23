@@ -4,7 +4,6 @@ window.addEventListener('DOMContentLoaded', init);
 
 function init() {
   const jsConfetti = new JSConfetti();
-  console.log(jsConfetti);
 
   setVolume(50);
   hornImageEvent();

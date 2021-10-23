@@ -3,8 +3,12 @@
 window.addEventListener('DOMContentLoaded', init);
 
 function init() {
-  populateVoices();
-  pressToTalkButtonEvent();
+  // Wait to get past race condition when
+  // populating voices
+  setTimeout(function () {
+    populateVoices();
+    pressToTalkButtonEvent();
+  }, 100);
 }
 
 function populateVoices() {
@@ -28,7 +32,12 @@ function pressToTalkButtonEvent() {
     const synth = window.speechSynthesis;
     const voices = synth.getVoices();
 
-    const voiceDropdownIndex = document.getElementById('voice-select').selectedOptions[0].getAttribute('data-index');
+    const voiceDropdown = document.getElementById('voice-select');
+    if (voiceDropdown.value == 'select') {
+      return;
+    }
+    
+    const voiceDropdownIndex = voiceDropdown.selectedOptions[0].getAttribute('data-index');
     const textValue = document.getElementById('text-to-speak').value;
 
     const utterThis = new SpeechSynthesisUtterance(textValue);
