@@ -31,14 +31,14 @@ function pressToTalkButtonEvent() {
   pressToTalkButton.addEventListener('click', function () {
     const synth = window.speechSynthesis;
     const voices = synth.getVoices();
+    const textValue = document.getElementById('text-to-speak').value;
 
     const voiceDropdown = document.getElementById('voice-select');
-    if (voiceDropdown.value == 'select') {
+    if (voiceDropdown.value == 'select' || textValue == '') {
       return;
     }
     
     const voiceDropdownIndex = voiceDropdown.selectedOptions[0].getAttribute('data-index');
-    const textValue = document.getElementById('text-to-speak').value;
 
     const utterThis = new SpeechSynthesisUtterance(textValue);
     utterThis.voice = voices[voiceDropdownIndex];

@@ -73,7 +73,7 @@ function playSoundEvent(jsConfetti) {
     }
 
     const hornDropdownValue = document.getElementById('horn-select').value;
-    if (hornDropdownValue == 'party-horn') {
+    if (hornDropdownValue == 'party-horn' && audioElement.volume > 0) {
       jsConfetti.addConfetti();
     }
   });
